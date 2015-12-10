@@ -198,7 +198,7 @@ public class TankView extends SurfaceView implements SurfaceHolder.Callback {
         // move all objects in the game
         private void doUpdate(double elapsed) {
             if (fishFood != null) {
-                foodCoordinates = fishFood.doUpdate(elapsed);
+                foodCoordinates = fishFood.doUpdate();
                 if (foodCoordinates[0] == -1){
                     fishFood = null;
                 }
@@ -207,12 +207,11 @@ public class TankView extends SurfaceView implements SurfaceHolder.Callback {
                 }
             } else {
                 if (whereToSwim[0] == -1){
-                    whereToSwim[0] = (float) Math.random()*screenWidth;
-                    whereToSwim[1] = (float) Math.random()*screenHeight;
+                    whereToSwim[0] = (float) Math.random()*(screenWidth- fish.frameWidth);
+                    whereToSwim[1] = (float) Math.random()*(screenHeight - fish.frameHeight);
                 }
                 if (fish.doUpdate(elapsed,whereToSwim[0],whereToSwim[1],"Chilling") == -1){
                     whereToSwim[0] = -1;
-                    System.out.println("new spot to swim");
                 }
                 fish.doUpdate(elapsed, whereToSwim[0], whereToSwim[1], "Chilling");
             }

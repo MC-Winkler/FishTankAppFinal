@@ -66,6 +66,8 @@ public class Fish {
         frameWidth = bitmap.getWidth() / numFramesInSpriteSheet;
         frameHeight = bitmap.getHeight();
 
+        System.out.println("framewidth = " + frameWidth);
+        System.out.println("frameheight = " + frameHeight);
         // figure out the screen width
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
@@ -150,6 +152,8 @@ public class Fish {
             step = 0.0;                 // reset timer
         }
 
+        //if the fish is chasing food it should swim faster than
+        //if it's just hanging out
         if (status.equals("Chasing Food")){
             x = (float) (x + ((foodX - x) * elapsed*2));
             y = (float) (y + ((foodY - y) * elapsed*2));

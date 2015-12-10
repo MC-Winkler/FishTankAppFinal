@@ -56,31 +56,31 @@ public class FishFood {
                 null);
     }
 
-    //TODO - Do we need to use elapsed here?
-    public float[] doUpdate(double elapsed) {
+    public float[] doUpdate() {
+
         float[] foodCoordinates = new float[2];
         //food drifts downward
         if((y+2) < screenHeight)
             y += 2;
-        /*
-        System.out.println("left side = " + (x-width/2));
-        System.out.println("right side = " + (x+width/2));
-        System.out.println("fish.x + fish.framewidth * 3/8 = "  + (fish.x+ fish.frameWidth*3/8));
-        System.out.println("fish.x - fish.framewidth * 3/8 = "  + (fish.x- fish.frameWidth*3/8));
-        */
-        if(fish.isFacingRight &&((fish.x+(fish.frameWidth * (3/8))) < x + width/2 && (fish.x+(fish.frameWidth * (3/8))) > x - width/2)
+
+        if(fish.isFacingRight &&((fish.x+(fish.frameWidth*.4)) < x + width/2 && (fish.x + fish.frameWidth*.4) > x - width/2)
             && (fish.y < y + height/2) && (fish.y > y - height/2)) {
             foodCoordinates[0] = -1;
             foodCoordinates[1] = -1;
         }
-        else if (!fish.isFacingRight &&((fish.x+(fish.frameWidth * (3/8))) < x + width/2 && (fish.x+(fish.frameWidth * (3/8))) > x - width/2)
+        else if (!fish.isFacingRight &&((fish.x) < x + width/2 && (fish.x) > x - width/2)
+                && (fish.y < y + height/2) && (fish.y > y - height/2)) {
+            foodCoordinates[0] = -1;
+            foodCoordinates[1] = -1;
+        }
+        else if (((fish.x) < x + width/2 && (fish.x) > x - width/2)
                 && (fish.y < y + height/2) && (fish.y > y - height/2)) {
             foodCoordinates[0] = -1;
             foodCoordinates[1] = -1;
         }
         else {
             foodCoordinates[0] = x;
-            foodCoordinates[1] = y;
+            foodCoordinates[1] = y+ (float) (height*.75);
         }
         return foodCoordinates;
 
