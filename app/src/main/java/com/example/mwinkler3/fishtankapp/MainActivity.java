@@ -66,8 +66,10 @@ public class MainActivity extends Activity {
     }
 
     public void onStartClick (View view) {
-        Intent intent = new Intent(this, FishTankActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent();
+        intent.putExtra("background", background);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 }

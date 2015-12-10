@@ -160,7 +160,7 @@ public class Fish {
         }
 
         if (x - foodX < 50 && y -foodY <50) {
-            if (numOfUpdatesSinceLastMove == 150){
+            if (numOfUpdatesSinceLastMove >= (Math.random()*100 + 50)){
 
                 numOfUpdatesSinceLastMove = 0;
                 return -1;

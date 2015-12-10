@@ -1,36 +1,37 @@
 package com.example.mwinkler3.fishtankapp;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class FishTankActivity extends Activity {
+
+    private TankView tankView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fish_tank);
+
+        tankView = (TankView) findViewById(R.id.tankView);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    public void onHomeClick(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivityForResult(intent, 1);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                // get the new pen width and tell the DoodleView
+                int backgroundId = data.getIntExtra("background", 0);
+                tankView.setBackgroundBitmap(backgroundId);
+            }
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }

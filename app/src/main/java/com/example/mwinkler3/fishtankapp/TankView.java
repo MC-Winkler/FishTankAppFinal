@@ -59,13 +59,23 @@ public class TankView extends SurfaceView implements SurfaceHolder.Callback {
         // game loop thread
         thread = new GameLoopThread();
 
-        backgroundBitmap = BitmapFactory.decodeResource(context.getResources(), MainActivity.background);
+        setBackgroundBitmap(0);
 
         whereToSwim = new float[2];
         whereToSwim[0] = -1;
         whereToSwim[1] = -1;
+
+
     }
 
+    public void setBackgroundBitmap(int backgroundId){
+        if(backgroundId ==0){
+            backgroundBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.bikini_bottom);
+        }
+        else {
+            backgroundBitmap = BitmapFactory.decodeResource(context.getResources(), backgroundId);
+        }
+    }
 
     // SurfaceHolder.Callback methods:
     @Override
@@ -204,7 +214,7 @@ public class TankView extends SurfaceView implements SurfaceHolder.Callback {
                     whereToSwim[0] = -1;
                     System.out.println("new spot to swim");
                 }
-                fish.doUpdate(elapsed, whereToSwim[0], whereToSwim[1],"Chilling");
+                fish.doUpdate(elapsed, whereToSwim[0], whereToSwim[1], "Chilling");
             }
 
         }
@@ -212,10 +222,7 @@ public class TankView extends SurfaceView implements SurfaceHolder.Callback {
         // draw all objects in the game
         private void doDraw(Canvas canvas) {
 
-            // draw the background
-            if(backgroundBitmap == null){
-                backgroundBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.bikini_bottom);
-            }
+
 
             canvas.drawBitmap(backgroundBitmap,null,new Rect(0,0,screenWidth,screenHeight),null);
             fish.doDraw(canvas);
