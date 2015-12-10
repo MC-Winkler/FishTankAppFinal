@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Fishy Friends</string>
+
+    <string name="start_button">Start</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_fish_tank">Fishy Friends</string>
+    <string name="pick_a_fishy">Pick a Fishy!</string>
+    <string name="pick_background">Pick a Tank!</string>
+</resources>
