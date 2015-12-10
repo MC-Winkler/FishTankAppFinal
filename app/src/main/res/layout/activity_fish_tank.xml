@@ -3,10 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.mwinkler3.fishtankapp.FishTankActivity">
 
     <com.example.mwinkler3.fishtankapp.TankView
+        android:id="@+id/tankView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_button"
+        android:layout_alignTop="@+id/tankView"
+        android:layout_alignLeft="@+id/tankView"
+        android:onClick="onHomeClick"
+        />
 
 </RelativeLayout>

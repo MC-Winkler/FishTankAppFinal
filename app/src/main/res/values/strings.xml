@@ -6,4 +6,5 @@
     <string name="title_activity_fish_tank">Fishy Friends</string>
     <string name="pick_a_fishy">Pick a Fishy!</string>
     <string name="pick_background">Pick a Tank!</string>
+    <string name="home_button">Main Menu</string>
 </resources>
